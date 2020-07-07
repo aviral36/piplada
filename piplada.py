@@ -152,6 +152,7 @@ output_window.grid(row = 12, columnspan = 3, padx = 10, pady = 10)
 output_window2 = tk.Text(application, state = 'disabled', bg = 'gray88', fg = 'gray40', exportselection = 0, height = 1)
 output_window2.grid(row = 13, columnspan = 3, padx = 10, pady = 2)
 
+btn_draw = tk.Button(application, text = "Generate!", command = generate_fractal, bg= "green4", fg='white', width = 30)
 btn_draw.grid(row=20, columnspan=3, padx = 10,pady = 10)
 
 application.mainloop()

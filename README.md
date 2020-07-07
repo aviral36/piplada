@@ -3,6 +3,9 @@
 <br>
 
 ***
+<img align = "left" src = "https://github.com/aviral36/piplada/blob/master/wiki/animation_1.gif">
+
+<br>
 
 ### Version 1.0.2 beta release.
 

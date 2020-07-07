@@ -9,7 +9,11 @@
 
 ### Version 1.0.2 beta release.
 
-Generate 2D vectors by defining fractal characteristics.
+Piplada generates 2D vectors using fractal information input by the user. It uses Python's tkinter module to create a canvas. No external libraries have been used to develop this application.
+
+Find out more about fractals, see the [Wikipedia page](https://en.wikipedia.org/wiki/Fractal).
+
+Future releases will contain several improvements and pre-loaded examples. If you wish to suggest a new feature, feel free to email me.
  
 This is a beta release. 
  

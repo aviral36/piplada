@@ -44,6 +44,14 @@ def clear_entry():
         output_window.insert('end', sentence)
     output_window.configure(state='disabled')
 
+#clear all commands
+def clear_all():
+    global commands
+    commands = list()
+    output_window.configure(state='normal')
+    output_window.delete(1.0, 'end')
+    output_window.configure(state='disabled')
+
 #pointer configuration
 def ptr_config():
     global show_pointer
@@ -138,13 +146,16 @@ l_entry.grid(row = 7, column = 2, sticky = 'w', pady = 5)
 #fill config row begins
 
 var1 = tk.IntVar()
-ptr_display = tk.Checkbutton(application, text = 'Display Pointer', bg = 'white', variable = var1, onvalue = 1, offvalue = 0, command = ptr_config)
+ptr_display = tk.Checkbutton(application, text = 'Show Pointer', bg = 'white', variable = var1, onvalue = 1, offvalue = 0, command = ptr_config)
 ptr_display.grid(row = 8, column = 0)
-add_btn = tk.Button(application, text = "Add Entry", command = add_entry, bg = 'gainsboro', width = 30)
-add_btn.grid(row = 10, pady = 5, columnspan = 3)
+add_btn = tk.Button(application, text = "Add Entry", command = add_entry, bg = 'gainsboro')
+add_btn.grid(row = 10, pady = 5, ipadx = 2, padx = 2, column = 0, sticky = 'nesw')
 
-clear_btn = tk.Button(application, text = "Delete Entry", command = clear_entry, bg = 'gainsboro', width = 30)
-clear_btn.grid(row = 11, columnspan = 3)
+clear_btn = tk.Button(application, text = "Delete Entry", command = clear_entry, bg = 'gainsboro')
+clear_btn.grid(row = 10, column = 1, pady = 5, padx = 2, sticky = 'nesw')
+
+clearall_btn = tk.Button(application, text = "Clear All", command = clear_all, bg = 'gainsboro', fg = 'red4')
+clearall_btn.grid(row = 10, column = 2, pady = 5, padx = 2, sticky = 'nesw')
 
 output_window = tk.Text(application, state = 'disabled', bg = 'gray88', fg = 'gray40', exportselection = 0, height = 10)
 output_window.grid(row = 12, columnspan = 3, padx = 10, pady = 10)

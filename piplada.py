@@ -71,6 +71,7 @@ def ptr_config():
 #generate fractal
 def generate_fractal():
     #turtle canvas
+    command_list = commands
     board = Screen()
     board.setup(width = int(screen_width/2 - 100), height = 1.0, startx = int(screen_width/2 - 100), starty = 0)
     board.title("Piplada Canvas")
@@ -81,7 +82,7 @@ def generate_fractal():
         turtle.color("red")
         turtle.hideturtle()
     while True:
-        for cmd in commands:
+        for cmd in command_list:
             if cmd[0] == "Move":
                 turtle.forward(int(cmd[1]))
             else: 

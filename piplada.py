@@ -4,14 +4,15 @@ from turtle import Screen
 from PIL import Image, ImageTk
 import webbrowser
 
+#global variables
 commands = list() 
 show_pointer = int()
+speed = int()
+pretty_sentences = list()
 
 #opens link from tk's label button
 def callback(url):
     webbrowser.open_new(url)
-
-pretty_sentences = list()
 
 #add command entry
 def add_command():
@@ -47,7 +48,9 @@ def clear_entry():
 #clear all commands
 def clear_all():
     global commands
+    global pretty_sentences
     commands = list()
+    pretty_sentences = list()
     output_window.configure(state='normal')
     output_window.delete(1.0, 'end')
     output_window.configure(state='disabled')
@@ -68,18 +71,36 @@ def ptr_config():
     output_window2.insert('end', ptr_text)
     output_window2.configure(state='disabled')
 
+#specify drawing speed
+def speedometer():
+    global speed
+    s = cmd_2.get()
+    if s == "Very Slow":
+        speed = 1
+    elif s == "Slow":
+        speed = 4
+    elif s == "Normal":
+        speed = 6
+    elif s == "Fast":
+        speed = 8
+    elif s == "Very Fast":
+        speed = 10
+    else:
+        speed = 0
+
 #generate fractal
 def generate_fractal():
     #turtle canvas
+    speedometer()
     command_list = commands
     board = Screen()
+    turtle.speed(speed)
+    turtle.color("green")
     board.setup(width = int(screen_width/2 - 100), height = 1.0, startx = int(screen_width/2 - 100), starty = 0)
     board.title("Piplada Canvas")
     if show_pointer == 1:
-        turtle.color("green","red")
         turtle.showturtle()
     else:
-        turtle.color("red")
         turtle.hideturtle()
     while True:
         for cmd in command_list:
@@ -133,7 +154,7 @@ cmd_1 = tk.StringVar(application)
 cmd_1.set(OptionList[0])
 
 opt = tk.OptionMenu(application, cmd_1, *OptionList)
-opt.config(font=("system", 11), relief = "flat", bg = 'white', fg = 'blue', width = 6)
+opt.config(font=("system", 11), relief = "flat", bg = 'white', highlightcolor = 'white', fg = 'blue', width = 6)
 opt.grid(row = 7, column = 0, sticky ='e', pady = 5)
 
 l_box = tk.Label(application, text = "pointer", bg= 'white', fg = 'blue', font=("system", 11))
@@ -144,11 +165,23 @@ l_entry = tk.Entry(application, textvariable = val_str, bg = "alice blue", fg = 
 l_entry.grid(row = 7, column = 2, sticky = 'w', pady = 5)
 ###Command row ends###
 
-#fill config row begins
-
+###fill config row begins###
 var1 = tk.IntVar()
 ptr_display = tk.Checkbutton(application, text = 'Show Pointer', bg = 'white', variable = var1, onvalue = 1, offvalue = 0, command = ptr_config)
 ptr_display.grid(row = 8, column = 0)
+
+SpeedList = ["Very Slow" , "Slow", "Normal", "Fast", "Very Fast", "Zoom!!!"]
+cmd_2 = tk.StringVar(application)
+cmd_2.set(SpeedList[2])
+
+speed_label = tk.Label(application, text = "Speed:", bg = "white")
+speed_label.grid(row = 8, column =1, sticky = 'e')
+
+speed_menu = tk.OptionMenu(application, cmd_2, *SpeedList)
+speed_menu.config(relief = "flat", bg = 'gray95', fg = 'black')
+speed_menu.grid(row = 8, column = 2, sticky ='w')
+###fill config row ends###
+
 add_btn = tk.Button(application, text = "Add Entry", command = add_entry, bg = 'gainsboro')
 add_btn.grid(row = 10, pady = 5, ipadx = 2, padx = 2, column = 0, sticky = 'nesw')
 

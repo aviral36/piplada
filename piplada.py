@@ -122,7 +122,7 @@ def generate_fractal():
 
 #tkinter window
 application = tk.Tk()
-application.title("Piplada v1.0.2")
+application.title("Piplada v1.1")
 application.grid_columnconfigure((0, 1, 2), weight=1)
 
 #position config

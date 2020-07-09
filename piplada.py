@@ -98,17 +98,24 @@ def generate_fractal():
     turtle.color("green")
     board.setup(width = int(screen_width/2 - 100), height = 1.0, startx = int(screen_width/2 - 100), starty = 0)
     board.title("Piplada Canvas")
+    if command_list == []:
+        turtle.bye()
     if show_pointer == 1:
         turtle.showturtle()
     else:
         turtle.hideturtle()
+    if command_list[0][0] == 'Move':
+        #set pointer position midway of the first move
+        d_ = int(command_list[0][1])/2
+        centre = (-d_, 0)
+        turtle.setpos(centre)
     while True:
         for cmd in command_list:
             if cmd[0] == "Move":
                 turtle.forward(int(cmd[1]))
             else: 
                 turtle.left(int(cmd[1]))
-        if abs(turtle.pos()) < 1:
+        if abs(turtle.pos() - centre) < 1:
             break
     turtle.done()
     application.mainloop()
@@ -138,7 +145,7 @@ top_text.grid(row=2, columnspan=3)
 
 link1 = tk.Label(application, text="For Piplada documentation, click here", fg="blue", cursor="hand2", bg="white")
 link1.grid(row=3, columnspan=3)
-link1.bind("<Button-1>", lambda e: callback("https://github.com/aviral36/piplada/blob/master/README.md"))
+link1.bind("<Button-1>", lambda e: callback("https://github.com/aviral36/piplada/wiki"))
 
 help_text = tk.Label(application, bg="white", text = "\nMovement is in a straight line in\n the direction it is facing, in pixels.\n Rotation is in degrees, anti-clockwise ")
 help_text.grid(row=4, columnspan=3)

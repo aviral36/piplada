@@ -7,7 +7,11 @@
 
 <br>
 
-### Version 1.0.2 beta release.
+### EXE now available for download for Windows!
+
+Click here to download [Piplada.rar](https://drive.google.com/uc?export=download&id=1fa_93D2Xyt9H4srjV1NiWXMsrL8M48xi). Exract all the files and run Piplada.exe.
+
+### Version 1.1 release.
 
 Piplada generates 2D vectors using fractal information input by the user. It uses Python's tkinter module to create a canvas. No external libraries have been used to develop this application.
 

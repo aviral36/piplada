@@ -1,0 +1,3 @@
+command: 
+
+pyinstaller --noconfirm --onefile --windowed --icon "C:/Users/Avantika/Downloads/app_icon.ico" --name "Piplada" --add-data "C:/Users/Avantika/Documents/GitHub/piplada/colour_picker_icon.PNG;." --add-data "C:/Users/Avantika/Documents/GitHub/piplada/piplada_icon.PNG;."  "C:/Users/Avantika/Documents/GitHub/piplada/piplada.py"

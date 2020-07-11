@@ -4,7 +4,18 @@ from turtle import Screen
 from PIL import Image, ImageTk
 import webbrowser
 from turtle import TurtleScreen
+import os
+import time
 
+def resource_path(relative_path):
+    try:
+        base_path = sys._MEIPASS
+    except Exception:
+        base_path = os.path.abspath(".")
+
+    return os.path.join(base_path, relative_path)
+
+    
 #global variables
 commands = list() 
 show_pointer = int()
@@ -556,6 +567,7 @@ def generate_fractal():
         turtle.showturtle()
     else:
         turtle.hideturtle()
+    time.sleep(1)
     if command_list[0][0] == 'Move':
         #set pointer position midway of the first move
         d_ = int(command_list[0][1])/2

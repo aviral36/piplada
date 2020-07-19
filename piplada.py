@@ -14,8 +14,7 @@ def resource_path(relative_path):
         base_path = os.path.abspath(".")
 
     return os.path.join(base_path, relative_path)
-
-    
+ 
 #global variables
 commands = list() 
 show_pointer = int()
@@ -312,6 +311,20 @@ def fg_clr_44():
     global fg_color
     fg_color = bg_colours[4][4]
 
+def set_bg_hex(bg_hex):
+    global bg_color
+    if bg_hex == '':
+        print("invalid")
+    else:
+        bg_color = bg_hex
+
+def set_fg_hex(fg_hex):
+    global fg_color
+    if fg_hex == '':
+        print("invalid")
+    else:
+        fg_color = fg_hex
+
 #####color functions end#####
 
 #background color setter
@@ -322,22 +335,26 @@ def bg_color_setter():
     global bg_color
     global bg_colours
     global fg_color
+    global fg_hex
+    global bg_hex
 
     #closes bg_window
-    def close_bg_window():    
-        bg_window.destroy()
+    def close_bg_window():
+        bg_hex = val_bghex.get()
+        set_bg_hex(bg_hex)
         ow3_text = "bg: "+ bg_color + " | line: " + fg_color
         output_window3.configure(state = 'normal')
         output_window3.delete(1.0, 'end')
         output_window3.insert('end', ow3_text)
         output_window3.configure(state='disabled')
+        bg_window.destroy()
     
     bg_window.title("Colour Picker")
     bg_window.grid_columnconfigure((0, 1, 2, 3, 4), weight=1)
     s_width = application.winfo_screenwidth()
     s_height = application.winfo_screenheight()
 
-    s_dims = str(300)+"x"+str(int(s_height/2.5))+"+"+str(int(s_width/2)-400)+"+"+str(150)
+    s_dims = str(300)+"x"+str(int(s_height/2.15))+"+"+str(int(s_width/2)-400)+"+"+str(150)
     bg_window.geometry(s_dims)
     bg_window.configure(background="white")
 
@@ -431,16 +448,16 @@ def bg_color_setter():
     text_b = tk.Label(bg_window, text = "Enter Hex:", bg = "white",  width = 7)
     text_b.grid(row = 9, column = 1, sticky='w')
 
-    box_b = tk.Entry(bg_window, textvariable = bg_hex, width = 10)
+    val_bghex = tk.StringVar(bg_window, value='')
+    box_b = tk.Entry(bg_window, textvariable = val_bghex, width = 10)
     box_b.grid(row = 9, column = 2, columnspan = 2, sticky = 'nesw', padx = 3)
     
     done_btn = tk.Button(bg_window, text = "Done", command = close_bg_window, bg = "gray88")
-    done_btn.grid(row = 8, columnspan = 5, padx = 10, pady = 20, sticky = 'nesw')
+    done_btn.grid(row = 10, columnspan = 5, padx = 10, pady = 20, sticky = 'nesw')
 
 
     bg_window.wait_window(bg_window)
     
-
 #line color setter
 def fg_color_setter():
     
@@ -449,15 +466,19 @@ def fg_color_setter():
     global bg_color
     global bg_colours
     global fg_color
+    global bg_hex
+    global fg_hex
 
     #closes fg_window
-    def close_fg_window():    
-        fg_window.destroy()
+    def close_fg_window():  
+        fg_hex = val_fghex.get()  
+        set_fg_hex(fg_hex)  
         ow3_text = "bg: "+ bg_color + " | line: " + fg_color
         output_window3.configure(state = 'normal')
         output_window3.delete(1.0, 'end')
         output_window3.insert('end', ow3_text)
         output_window3.configure(state='disabled')
+        fg_window.destroy()
     
     fg_window.title("Colour Picker")
     fg_window.grid_columnconfigure((0, 1, 2, 3, 4), weight=1)
@@ -558,7 +579,8 @@ def fg_color_setter():
     text_a = tk.Label(fg_window, text = "Enter Hex:", bg = "white",  width = 7)
     text_a.grid(row = 9, column = 1, sticky='w')
 
-    box_a = tk.Entry(fg_window, textvariable = fg_hex, width = 10)
+    val_fghex = tk.StringVar(fg_window, value='')
+    box_a = tk.Entry(fg_window, textvariable = val_fghex, width = 10)
     box_a.grid(row = 9, column = 2, columnspan = 2, sticky = 'nesw', padx = 3)
 
     done_btn = tk.Button(fg_window, text = "Done", command = close_fg_window, bg = "gray88")

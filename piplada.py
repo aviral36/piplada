@@ -25,6 +25,8 @@ pretty_sentences = list()
 bg_color = "white"
 fg_color = "black"
 bg_colours = [["black", "navy", "red4", "dark green", "dark goldenrod"], ["gray30", "blue", "red3", "forest green", "goldenrod"], ["gray50", "RoyalBlue1", "red", "green2", "gold"], ["gray80", "light sky blue", "dark orange", "lawn green", "navajo white"], ["white", "light cyan", "orange", "SeaGreen1", "bisque"]]
+fg_hex = str()
+bg_hex = str()
 
 #opens link from tk's label button
 def callback(url):
@@ -423,6 +425,15 @@ def bg_color_setter():
     c4_4 = tk.Button(bg_window, width = 7, bg = bg_colours[4][4], command = bg_clr_44)
     c4_4.grid(row = 7, column = 4)
 
+    text_2 = tk.Label(bg_window, text = "OR", bg = "white")
+    text_2.grid(row = 8, columnspan = 5, pady = 5)
+
+    text_b = tk.Label(bg_window, text = "Enter Hex:", bg = "white",  width = 7)
+    text_b.grid(row = 9, column = 1, sticky='w')
+
+    box_b = tk.Entry(bg_window, textvariable = bg_hex, width = 10)
+    box_b.grid(row = 9, column = 2, columnspan = 2, sticky = 'nesw', padx = 3)
+    
     done_btn = tk.Button(bg_window, text = "Done", command = close_bg_window, bg = "gray88")
     done_btn.grid(row = 8, columnspan = 5, padx = 10, pady = 20, sticky = 'nesw')
 
@@ -453,7 +464,7 @@ def fg_color_setter():
     s_width = application.winfo_screenwidth()
     s_height = application.winfo_screenheight()
 
-    s_dims = str(300)+"x"+str(int(s_height/2.5))+"+"+str(int(s_width/2)-400)+"+"+str(150)
+    s_dims = str(300)+"x"+str(int(s_height/2.15))+"+"+str(int(s_width/2)-400)+"+"+str(150)
     fg_window.geometry(s_dims)
     fg_window.configure(background="white")
 
@@ -541,8 +552,17 @@ def fg_color_setter():
     c4_4 = tk.Button(fg_window, width = 7, bg = bg_colours[4][4], command = fg_clr_44)
     c4_4.grid(row = 7, column = 4)
 
+    text_1 = tk.Label(fg_window, text = "OR", bg = "white")
+    text_1.grid(row = 8, columnspan = 5, pady = 5)
+
+    text_a = tk.Label(fg_window, text = "Enter Hex:", bg = "white",  width = 7)
+    text_a.grid(row = 9, column = 1, sticky='w')
+
+    box_a = tk.Entry(fg_window, textvariable = fg_hex, width = 10)
+    box_a.grid(row = 9, column = 2, columnspan = 2, sticky = 'nesw', padx = 3)
+
     done_btn = tk.Button(fg_window, text = "Done", command = close_fg_window, bg = "gray88")
-    done_btn.grid(row = 8, columnspan = 5, padx = 10, pady = 20, sticky = 'nesw')
+    done_btn.grid(row = 10, columnspan = 5, padx = 10, pady = 20, sticky = 'nesw')
 
 
     fg_window.wait_window(fg_window)

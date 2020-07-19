@@ -9,7 +9,7 @@
 
 ### EXE now available for download for Windows!
 
-Click here to download [Piplada.rar](https://drive.google.com/uc?export=download&id=1fa_93D2Xyt9H4srjV1NiWXMsrL8M48xi). Exract all the files and run Piplada.exe.
+Click [here](https://aviral36.github.io/#Piplada) to download. Exract all the files and run Piplada.exe.
 
 ### Version 1.1 release.
 

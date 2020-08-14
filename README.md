@@ -17,6 +17,8 @@ Piplada generates 2D vectors using fractal information input by the user. It use
 
 To learn more, visit [Piplada Wiki](https://github.com/aviral36/piplada/wiki).
 
+Piplada can draw various shapes. To know more about it, see [Wiki/Examples](https://github.com/aviral36/piplada/wiki/Examples).
+
 Future releases will contain several improvements and pre-loaded examples. If you wish to suggest a new feature, feel free to email me.
  
 This is a beta release. 
